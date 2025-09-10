@@ -28,12 +28,23 @@ Each app highlights a specific frontend concept such as API integration, state m
 ---
 
 ## 📁 Project Structure
-portfolio/
-│── src/
-│   ├── apps/         # Mini-apps (submission form, jokes generator, etc.)
-│   ├── components/   # Reusable UI components
-│   ├── data/         # Project data (miniApps, categories)
-│   ├── pages/        # Pages (Home, NotFound)
-│   └── styles/       # CSS modules
-│── public/           # Static assets
-│── package.json
+
+```bash
+react-playground/
+│── 📂 public/              # Static assets (favicon, images, etc.)
+│
+│── 📂 src/
+│   ├── 📂 apps/             # Mini-apps (submission form, jokes generator, etc.)
+│   ├── 📂 assets/           # Images, icons, and other static assets
+│   ├── 🧩 components/       # Reusable UI components
+│   ├── ⚙️ data/             # Project data (miniApps, categories, etc.)
+│   ├── 🔄 hooks/            # Custom React hooks
+│   ├── 📄 pages/            # Page components (Home, NotFound, etc.)
+│   ├── 🎨 styles/           # Global and modular CSS
+│   └── 🛠️ utils/            # Utility functions (e.g., search.js)
+│
+│── 📄 App.jsx               # Root app component
+│── 🎨 App.css               # Global app styling
+│── 🎨 index.css             # Entry-point CSS
+│── ⚡ main.jsx              # App entry point (React + Vite)
+│── 📄 index.html            # HTML template
