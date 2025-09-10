@@ -19,7 +19,7 @@ export default function CTASection() {
           rel="noopener noreferrer"
           className={`${buttonStyles.button} ${buttonStyles["button--github"]}`}
         >
-          <Github size={18} /> View My GitHub
+          <Github size={18} aria-hidden="true" /> View My GitHub
         </a>
         <a
           href="https://www.linkedin.com/in/mihaela-mihai/"
@@ -27,13 +27,13 @@ export default function CTASection() {
           rel="noopener noreferrer"
           className={`${buttonStyles.button} ${buttonStyles["button--linkedin"]}`}
         >
-          <Linkedin size={18} /> Connect on LinkedIn
+          <Linkedin size={18} aria-hidden="true" /> Connect on LinkedIn
         </a>
         <a
           href="mailto:elamihai.mm@gmail.com"
           className={`${buttonStyles.button} ${buttonStyles["button--contact"]}`}
         >
-          <Mail size={18} /> Contact Me
+          <Mail size={18} aria-hidden="true" /> Contact Me
         </a>
       </div>
 

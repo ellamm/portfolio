@@ -237,7 +237,7 @@ export const miniApps = [
     liveDemo: "https://assembly-mm.netlify.app/",
     category: "Games",
     type: "external",
-    tech: ["JavaScript", "CSS"],
+    tech: ["React", "CSS"],
     difficulty: "Intermediate",
     features: [
       "Hangman-style word guessing",
@@ -286,7 +286,7 @@ export const miniApps = [
     type: "external",
     tech: ["HTML", "CSS", "Bootstrap"],
     difficulty: "Beginner",
-    features: ["Bootstrap grid", "Responsive design", "Static content"],
+    features: ["Visual storytelling", "Responsive design", "Static content"],
     skills: ["Layout Design", "Bootstrap", "Responsive UI"],
   },
   {

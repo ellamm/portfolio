@@ -18,7 +18,7 @@ export default function Navbar() {
         aria-current={location.pathname === "/" ? "page" : undefined}
       >
         <span>
-          <Home size={18} />
+          <Home size={18} aria-hidden="true" />
         </span>
         <span>Home</span>
       </Link>
