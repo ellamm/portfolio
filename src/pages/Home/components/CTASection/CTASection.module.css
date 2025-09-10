@@ -1,0 +1,46 @@
+.cta {
+  text-align: center;
+  padding: var(--spacing-8);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: var(--spacing-10);
+}
+
+.cta:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  transition: var(--transition-normal);
+}
+
+.cta h2 {
+  margin-bottom: var(--spacing-4);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ctaText {
+  font-size: var(--font-size-md);
+  max-width: 700px;
+  margin: var(--spacing-4) auto var(--spacing-6);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.ctaButtons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.credit {
+  font-size: var(--font-size-xs);
+  opacity: 0.85;
+}
