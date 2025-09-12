@@ -174,8 +174,8 @@ export default function SubmissionForm() {
             required
           />
           <label htmlFor="acceptTerms" className={styles.termsLabel}>
-            <span aria-hidden="true">*</span> I agree to the terms and
-            conditions
+            I agree to the terms and conditions
+            <span aria-hidden="true">*</span>
           </label>
         </div>
 
