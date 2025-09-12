@@ -159,7 +159,7 @@ select:focus {
   margin-top: 1rem;
 }
 
-button {
+.formButton {
   padding: 0.7rem;
   border: none;
   background-color: transparent;
@@ -170,24 +170,24 @@ button {
   outline: none;
 }
 
-button::before {
+.formButton::before {
   content: " [ ";
 }
 
-button::after {
+.formButton::after {
   content: " ] ";
 }
 
-button:hover {
+.formButton:hover {
   background-color: #f0f0f0;
   border-radius: 12px;
 }
 
-button:active {
+.formButton:active {
   background-color: #e0e0e0;
 }
 
-button:disabled {
+.formButton:disabled {
   background: #8b8d8d;
   cursor: not-allowed;
   border-radius: 12px;

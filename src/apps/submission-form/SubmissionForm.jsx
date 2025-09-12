@@ -180,10 +180,18 @@ export default function SubmissionForm() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <button type="submit" disabled={submitSuccess}>
+          <button
+            type="submit"
+            disabled={submitSuccess}
+            className={styles.formButton}
+          >
             Submit
           </button>
-          <button type="button" onClick={handleReset}>
+          <button
+            type="button"
+            onClick={handleReset}
+            className={styles.formButton}
+          >
             Reset
           </button>
         </div>
