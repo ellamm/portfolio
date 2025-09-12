@@ -17,7 +17,7 @@ export default function AppsSection({
       role="main"
       id="main-content"
     >
-      <h2 id="apps-title" className={styles.srOnly}>
+      <h2 id="apps-title" className="srOnly">
         Available Applications
       </h2>
 

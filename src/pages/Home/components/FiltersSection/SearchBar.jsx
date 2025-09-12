@@ -9,7 +9,7 @@ export default function SearchBar({
 }) {
   return (
     <div className={styles.searchContainer}>
-      <label htmlFor={searchId} className={styles.srOnly}>
+      <label htmlFor={searchId} className="srOnly">
         Search applications by name or description
       </label>
       <Search className={styles.searchIcon} size={20} aria-hidden="true" />
@@ -24,7 +24,7 @@ export default function SearchBar({
         aria-describedby="search-help"
         autoComplete="off"
       />
-      <div id="search-help" className={styles.srOnly}>
+      <div id="search-help" className="srOnly">
         Search will filter applications as you type
       </div>
     </div>

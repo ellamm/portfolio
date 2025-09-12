@@ -8,13 +8,13 @@ export default function CategoryFilters({
 }) {
   return (
     <fieldset className={styles.categoryFilters}>
-      <legend className={styles.srOnly}>Filter by category</legend>
+      <legend className="srOnly">Filter by category</legend>
       <div
         role="group"
         aria-labelledby={filtersId}
         className={styles.categoryButtons}
       >
-        <div id={filtersId} className={styles.srOnly}>
+        <div id={filtersId} className="srOnly">
           Category filters:
         </div>
         {categories.map((category) => (

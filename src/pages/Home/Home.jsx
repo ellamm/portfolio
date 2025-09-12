@@ -83,7 +83,7 @@ export default function Home() {
       <a href="#main-content" className={styles.skipLink}>
         Skip to main content
       </a>
-      <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+      <div aria-live="polite" aria-atomic="true" className="srOnly">
         {announceResults}
       </div>
 

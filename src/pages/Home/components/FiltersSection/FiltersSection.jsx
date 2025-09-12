@@ -18,7 +18,7 @@ export default function FiltersSection({
       aria-labelledby="filters-title"
       role="search"
     >
-      <h2 id="filters-title" className={styles.srOnly}>
+      <h2 id="filters-title" className="srOnly">
         Filter and search applications
       </h2>
 
