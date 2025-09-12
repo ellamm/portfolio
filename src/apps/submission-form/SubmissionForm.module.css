@@ -160,6 +160,7 @@ select:focus {
 }
 
 .formButton {
+  font-family: inherit;
   padding: 0.7rem;
   border: none;
   background-color: transparent;
