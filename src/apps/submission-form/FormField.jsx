@@ -15,12 +15,13 @@ export default function FormField({
   return (
     <>
       <div className={styles.formRow}>
-        <label htmlFor={name} className={styles.label}>
+        <label htmlFor={name} className={styles.formLabel}>
           {label}
           {required && <span aria-hidden="true">*</span>}
         </label>
         {type === "textarea" ? (
           <textarea
+            className={styles.formTextarea}
             id={name}
             name={name}
             value={value}
@@ -36,6 +37,7 @@ export default function FormField({
           <>
             <span>[</span>
             <input
+              className={styles.formInput}
               type={type}
               id={name}
               name={name}

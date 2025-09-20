@@ -1,4 +1,5 @@
 import ErrorMessage from "./ErrorMessage";
+import styles from "./SubmissionForm.module.css";
 export default function SelectField({
   label,
   name,
@@ -10,11 +11,12 @@ export default function SelectField({
 }) {
   return (
     <>
-      <label htmlFor={name}>
+      <label htmlFor={name} className={styles.formLabel}>
         {label} {required && <span aria-hidden="true">*</span>}
       </label>
       <span>[</span>
       <select
+        className={styles.formSelect}
         id={name}
         name={name}
         value={value}

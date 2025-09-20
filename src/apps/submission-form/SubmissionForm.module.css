@@ -26,8 +26,8 @@
   text-align: center;
 }
 
-label,
-legend {
+.formLabel,
+.formLegend {
   font-weight: 500;
   margin-bottom: 0.5rem;
   color: #374151;
@@ -38,15 +38,15 @@ legend {
   align-items: center;
 }
 
-label {
+.formLabel {
   display: inline-block;
   flex: 0 0 120px;
   margin-right: 10px;
 }
 
-input,
-textarea,
-select {
+.formTextarea,
+.formInput,
+.formSelect {
   font-family: "Kode Mono", monospace;
   padding: 0.6rem 0.8rem;
   border: none;
@@ -57,12 +57,9 @@ select {
   flex: 1;
 }
 
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="url"],
-input[type="file"],
-textarea {
+.formInput,
+.radioInput,
+.formTextarea {
   border: none;
   border-bottom: 1px solid #333;
   background-color: transparent;
@@ -73,9 +70,9 @@ textarea {
   margin: 0 2px;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);

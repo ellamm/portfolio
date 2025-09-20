@@ -328,6 +328,24 @@ export const miniApps = [
   //   difficulty: "Beginner",
   //   features: ["Color generation", "Grid layout", "Interactive boxes"],
   // },
+
+  {
+    id: "color-tool",
+    title: "Color Tool",
+    description:
+      "Lighten or darken any hex color interactively with a toggle and slider, and preview the results in real time.",
+    icon: "🎨",
+    route: "/apps/color-tool",
+    category: "Visual",
+    tech: ["React", "JavaScript", "CSS Modules"],
+    skills: [
+      "Hex Color Manipulation",
+      "React State Management",
+      "Accessibility (ARIA)",
+    ],
+    difficulty: "Beginner",
+    features: ["Hex color validation", "Toggle", "Real-time color previews"],
+  },
 ];
 
 export const getCategoryIcon = (category) => {

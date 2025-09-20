@@ -14,7 +14,7 @@ export default function RadioGroup({
       aria-describedby={error ? `${name}Error` : undefined}
       className={styles.radioGroup}
     >
-      <legend>
+      <legend className={styles.formLegend}>
         {legend}
         {required && <span aria-hidden="true">*</span>}
       </legend>

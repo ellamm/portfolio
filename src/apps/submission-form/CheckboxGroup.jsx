@@ -14,7 +14,7 @@ export default function CheckboxGroup({
       aria-describedby={error ? `${name}Error` : undefined}
       className={styles.checkboxGroup}
     >
-      <legend>
+      <legend className={styles.formLegend}>
         {legend} {required && <span aria-hidden="true">*</span>}
       </legend>
 

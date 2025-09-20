@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound/NotFound";
 
 import SubmissionForm from "./apps/submission-form/SubmissionForm";
 import JokesGenerator from "./apps/jokes-generator/JokesGenerator";
+import ColorTool from "./apps/color-tool/ColorTool";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
 
             <Route path="/apps/submission-form" element={<SubmissionForm />} />
             <Route path="/apps/jokes-generator" element={<JokesGenerator />} />
+            <Route path="/apps/color-tool" element={<ColorTool />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
