@@ -1,5 +1,24 @@
 export const miniApps = [
   {
+    id: "elearning-app",
+    title: "eLearning Application",
+    description:
+      "Interactive learning management system with course tracking, search, and progress monitoring across multiple content types.",
+    icon: "📚",
+    route: "https://github.com/ellamm/eLearning-application",
+    liveDemo: "https://mm-elearning.netlify.app/",
+    category: "Education",
+    type: "external",
+    tech: ["React", "CSS", "React Router"],
+    difficulty: "Advanced",
+    features: ["Course search & filtering", "Progress tracking", "Pagination"],
+    skills: [
+      "React Hooks (Custom hooks)",
+      "Testing (Vitest, React Testing Library, Playwright)",
+      "Routing",
+    ],
+  },
+  {
     id: "superm",
     title: "SuperM - E-commerce Application",
     description:
