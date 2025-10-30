@@ -10,7 +10,7 @@ export const miniApps = [
     category: "Education",
     type: "external",
     tech: ["React", "CSS", "React Router"],
-    difficulty: "Advanced",
+    difficulty: "Intermediate",
     features: ["Course search & filtering", "Progress tracking", "Pagination"],
     skills: [
       "React Hooks (Custom hooks)",
