@@ -1,0 +1,109 @@
+/* ============================================================
+   Bottom dock — glass pill, active item taller inside the pill
+   ============================================================ */
+
+.dock {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: var(--radius-full);
+
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.98) inset,
+    0 4px 24px rgba(109, 40, 217, 0.14),
+    0 1px 8px rgba(0, 0, 0, 0.07);
+
+  white-space: nowrap;
+}
+
+/* Embedded inside the hero card — pinned to the card's bottom edge */
+.dockEmbedded {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.90) inset,
+    0 2px 14px rgba(109, 40, 217, 0.09),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Every button — same width, same icon position ── */
+.dockBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  /* Fixed min-width so all buttons are wide enough for their label */
+  min-width: 4.8rem;
+  padding: 0.55rem 0.6rem;
+
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+
+  /* Only colour and background transition — no layout transitions */
+  transition:
+    color      180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.dockBtn:hover:not(.active) {
+  color: var(--color-accent);
+  background: rgba(109, 40, 217, 0.06);
+}
+
+/* ── Active — taller padding expands the glass pill around it ── */
+.dockBtn.active {
+  color: #fff;
+  background: var(--color-accent);
+  /* Active: same width, taller so glass pill grows around it */
+  padding: 0.85rem 0.6rem;
+  box-shadow:
+    0 4px 16px rgba(109, 40, 217, 0.38),
+    0 1px 4px  rgba(109, 40, 217, 0.18);
+}
+
+.dockBtn.active:hover {
+  background: var(--color-accent-2);
+}
+
+/* ── Focus ── */
+.dockBtn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.dockBtn.active:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* ── Label ── */
+.label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}

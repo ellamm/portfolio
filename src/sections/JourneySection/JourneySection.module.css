@@ -1,0 +1,311 @@
+/* ── Title ── */
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  font-weight: 800;
+  color: var(--color-heading);
+  margin-bottom: clamp(1.25rem, 4vw, 2rem);
+}
+
+/* ═══════════════════════════════════════════
+   Desktop winding timeline
+   ─────────────────────────────────────────── */
+.timelineWrap {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 0.5rem;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Zero-size anchor at each node's center */
+.nodeGroup {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 1;
+}
+
+/* Round circle button — year + role inside */
+.circle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 114px;
+  height: 114px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  border: 2px solid rgba(109, 40, 217, 0.22);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8) inset,
+    0 3px 12px rgba(0, 0, 0, 0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: background var(--ease-fast), border-color var(--ease-fast), box-shadow var(--ease-fast);
+}
+.circle:hover {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(109, 40, 217, 0.45);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 6px 18px rgba(109, 40, 217, 0.12);
+}
+.circleCurrent {
+  border-color: rgba(109, 40, 217, 0.5);
+  background: rgba(237, 233, 254, 0.65);
+}
+
+.year {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  pointer-events: none;
+  line-height: 1;
+}
+
+/* thin divider between year and role */
+.circleRule {
+  display: block;
+  width: 42px;
+  height: 1px;
+  background: rgba(109, 40, 217, 0.2);
+  flex-shrink: 0;
+}
+
+.circleRole {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  text-align: center;
+  line-height: 1.3;
+  pointer-events: none;
+  max-width: 88px;
+}
+
+/* Summary labels above DOWN nodes / below UP nodes */
+.labelAbove,
+.labelBelow {
+  position: absolute;
+  left: -70px;
+  width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+/* circle half = 57px + 12px gap = 69px */
+.labelAbove { bottom: 69px; }
+.labelBelow { top: 69px; }
+
+.summary {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  text-align: center;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* ═══════════════════════════════════════════
+   Mobile stacked fallback (< 640px)
+   ─────────────────────────────────────────── */
+.mobileTimeline {
+  display: flex;
+  flex-direction: column;
+}
+.mobileItem {
+  display: flex;
+  gap: 1rem;
+}
+.mobileConnector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+.mobileDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(109, 40, 217, 0.18);
+  border: 2px solid var(--color-accent);
+  flex-shrink: 0;
+}
+.mobileDotCurrent {
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.14);
+}
+.mobileLine {
+  width: 2px;
+  flex: 1;
+  min-height: 1.5rem;
+  background: linear-gradient(to bottom, rgba(109, 40, 217, 0.22), rgba(109, 40, 217, 0.04));
+  margin-top: 4px;
+}
+.mobileContent {
+  padding-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-right: 0;
+}
+.mobileYear {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.mobileRole {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+.mobileCompany {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+/* ── Responsive breakpoint ── */
+@media (min-width: 640px) {
+  .timelineWrap   { display: block; }
+  .mobileTimeline { display: none; }
+}
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(109, 40, 217, 0.08);
+}
+.footerLink {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: opacity var(--ease-fast);
+}
+.footerLink:hover { opacity: 0.68; }
+
+/* ═══════════════════════════════════════════
+   Detail modal
+   ─────────────────────────────────────────── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(15, 20, 40, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+.modalCard {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: 85dvh;
+  overflow-y: auto;
+  background: rgba(240, 245, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-xl);
+  padding: 2rem 2rem 1.75rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 24px 64px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.modalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(109, 40, 217, 0.18);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background var(--ease-fast), color var(--ease-fast);
+}
+.modalClose:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-heading);
+}
+.modalDateRange {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.modalRole {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-heading);
+  margin: 0;
+  line-height: 1.25;
+}
+.modalCompany {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin-bottom: 0.25rem;
+}
+.modalBullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  border-top: 1px solid rgba(109, 40, 217, 0.1);
+  padding-top: 0.85rem;
+}
+.modalBullets li {
+  font-size: 0.88rem;
+  color: var(--color-body);
+  line-height: 1.65;
+  padding-left: 1.1rem;
+  position: relative;
+}
+.modalBullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.6;
+}

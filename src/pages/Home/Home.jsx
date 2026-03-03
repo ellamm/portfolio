@@ -1,110 +1,92 @@
-import { useState, useRef, useId, useCallback } from "react";
-import { miniApps, getCategories } from "../../data/miniApps";
-import { createSearchFilter } from "../../utils/search";
-import HeroSection from "./components/HeroSection/HeroSection";
-import FiltersSection from "./components/FiltersSection/FiltersSection";
-import AppsSection from "./components/AppsSection/AppsSection";
-import CTASection from "./components/CTASection/CTASection";
-import useAppFiltering from "../../hooks/useAppFiltering";
+import { useState, useEffect } from "react";
+import SectionCard from "../../components/SectionCard/SectionCard";
+import BottomDock from "../../sections/BottomDock/BottomDock";
+import ConstellationLines from "../../sections/ConstellationLines/ConstellationLines";
+import StorySection from "../../sections/StorySection/StorySection";
+import JourneySection from "../../sections/JourneySection/JourneySection";
+import SkillsSection from "../../sections/SkillsSection/SkillsSection";
+import ProjectsSection from "../../sections/ProjectsSection/ProjectsSection";
+import ContactSection from "../../sections/ContactSection/ContactSection";
+import Footer from "../../components/Footer/Footer";
 import styles from "./Home.module.css";
 
-// Helper function for announcements
-function createFilterAnnouncement(count, searchTerm, category) {
-  const plural = count !== 1 ? "s" : "";
-  const apps = `${count} application${plural}`;
-
-  if (searchTerm && category !== "All") {
-    return `Found ${apps} matching "${searchTerm}" in ${category} category`;
-  } else if (searchTerm) {
-    return `Found ${apps} matching "${searchTerm}"`;
-  } else if (category !== "All") {
-    return `Filtered by ${category}. Showing ${apps}.`;
-  } else {
-    return `Showing all ${apps}.`;
-  }
-}
+const SECTION_IDS = ["hero", "story", "journey", "skills", "projects", "contact"];
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
-  const [announceResults, setAnnounceResults] = useState("");
+  const [activeSection, setActiveSection] = useState("hero");
+  const [photoError, setPhotoError] = useState(false);
 
-  const searchInputRef = useRef(null);
-  const searchId = useId();
-  const filtersId = useId();
+  useEffect(() => {
+    const onScroll = () => {
+      const threshold = window.innerHeight * 0.45;
+      let current = "hero";
+      for (const id of SECTION_IDS) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= threshold) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
 
-  const categories = getCategories();
-  const filteredApps = useAppFiltering(miniApps, selectedCategory, searchTerm);
-
-  const handleSearch = useCallback(
-    (value) => {
-      setSearchTerm(value);
-      const searchFilter = createSearchFilter(value);
-      const matchingApps = miniApps.filter((app) => {
-        const matchesCategory =
-          selectedCategory === "All" || app.category === selectedCategory;
-        const matchesSearch = searchFilter(app);
-        return matchesCategory && matchesSearch;
-      });
-      setAnnounceResults(
-        createFilterAnnouncement(matchingApps.length, value, selectedCategory)
-      );
-    },
-    [selectedCategory]
-  );
-
-  const handleCategoryChange = useCallback(
-    (category) => {
-      setSelectedCategory(category);
-      const searchFilter = createSearchFilter(searchTerm);
-      const matchingApps = miniApps.filter((app) => {
-        const matchesCategory = category === "All" || app.category === category;
-        const matchesSearch = searchFilter(app);
-        return matchesCategory && matchesSearch;
-      });
-      setAnnounceResults(
-        createFilterAnnouncement(matchingApps.length, searchTerm, category)
-      );
-    },
-    [searchTerm]
-  );
-
-  const handleClearFilters = useCallback(() => {
-    setSearchTerm("");
-    setSelectedCategory("All");
-    setAnnounceResults(
-      `Filters cleared. Showing all ${miniApps.length} applications.`
-    );
-    setTimeout(() => searchInputRef.current?.focus(), 100);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <div className={styles.home}>
-      <a href="#main-content" className={styles.skipLink}>
-        Skip to main content
-      </a>
-      <div aria-live="polite" aria-atomic="true" className="srOnly">
-        {announceResults}
-      </div>
+    <div className={styles.page}>
+      <ConstellationLines />
 
-      <HeroSection />
-      <FiltersSection
-        searchId={searchId}
-        filtersId={filtersId}
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategoryChange={handleCategoryChange}
-        searchTerm={searchTerm}
-        onSearchChange={handleSearch}
-        searchInputRef={searchInputRef}
-      />
-      <AppsSection
-        filteredApps={filteredApps}
-        onClearFilters={handleClearFilters}
-        searchTerm={searchTerm}
-        selectedCategory={selectedCategory}
-      />
-      <CTASection />
+      {/* Hero — full-viewport card, no extra bottom padding */}
+      <SectionCard id="hero" sectionClassName={styles.heroSection} className={styles.heroCard}>
+        <h1 className={styles.heroName}>
+          <span className={styles.nameFirst}>Mihaela</span>
+          <span className={styles.nameLast}>Drondu</span>
+        </h1>
+
+        {!photoError ? (
+          <div className={styles.photoWrap}>
+            <img
+              src="/picture.jpg"
+              alt="Mihaela Drondu"
+              className={styles.photo}
+              onError={() => setPhotoError(true)}
+            />
+          </div>
+        ) : (
+          <div className={styles.photoFallback} aria-label="MD monogram">
+            MD
+          </div>
+        )}
+
+        <div className={styles.heroRoles}>
+          <span className={styles.heroRole}>Frontend Developer</span>
+          <span className={styles.heroRole}>Engineering Team Lead</span>
+          <span className={styles.heroRole}>Technical Product Owner</span>
+        </div>
+
+        <p className={styles.heroBio}>
+          9+ years at Nokia — from software engineering through Agile product
+          ownership to leading team of 15+. Now exploring frontend and
+          AI-assisted development for the joy of it — and open to roles where
+          technical depth and leadership experience intersect.
+        </p>
+
+        {/* Dock embedded inside the hero card */}
+        <BottomDock activeSection={activeSection} embedded />
+      </SectionCard>
+
+      {/* Scrollable sections */}
+      <StorySection />
+      <JourneySection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactSection />
+      <Footer />
+
+      {/* Fixed dock — appears only when scrolled past hero */}
+      {activeSection !== "hero" && <BottomDock activeSection={activeSection} />}
     </div>
   );
 }

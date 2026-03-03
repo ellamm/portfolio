@@ -28,7 +28,8 @@ export default function FormField({
             onChange={onChange}
             onBlur={onBlur}
             placeholder={placeholder}
-            aria-describedby={error && `${name}Error`}
+            aria-invalid={error ? "true" : undefined}
+            aria-describedby={error ? `${name}Error` : undefined}
             required={required}
             rows={2}
             cols={32}
@@ -45,7 +46,8 @@ export default function FormField({
               onChange={onChange}
               onBlur={onBlur}
               placeholder={placeholder}
-              aria-describedby={error && `${name}Error`}
+              aria-invalid={error ? "true" : undefined}
+              aria-describedby={error ? `${name}Error` : undefined}
               required={required}
               {...(type === "file" ? { accept: ".pdf,.doc,.docx" } : {})}
             />

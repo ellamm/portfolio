@@ -15,7 +15,16 @@ export default function AppCard({ app }) {
 function InternalAppCard({ app }) {
   return (
     <Link to={app.route} className={styles.cardLink}>
-      <article className={`${styles.card} ${styles["card--internal"]}`}>
+      <article
+        className={`${styles.card} ${styles["card--internal"]} ${
+          app.featured ? styles["card--featured"] : ""
+        }`}
+      >
+        {app.featured && (
+          <div className={styles.featuredBadge} aria-label="Featured project">
+            ★ Featured
+          </div>
+        )}
         <Header app={app} showScreenshot={false} />
         <Content app={app} showTech={false} />
         <Footer app={app} type="internal" />
@@ -27,7 +36,16 @@ function InternalAppCard({ app }) {
 
 function ExternalAppCard({ app }) {
   return (
-    <article className={`${styles.card} ${styles["card--external"]}`}>
+    <article
+      className={`${styles.card} ${styles["card--external"]} ${
+        app.featured ? styles["card--featured"] : ""
+      }`}
+    >
+      {app.featured && (
+        <div className={styles.featuredBadge} aria-label="Featured project">
+          ★ Featured
+        </div>
+      )}
       <div className={styles.externalBadge}>
         <Github size={14} aria-hidden="true" /> GitHub Project
       </div>

@@ -30,7 +30,7 @@ export default function RadioGroup({
             onChange={onChange}
           />
           <label htmlFor={`${name}-${opt.value}`} className={styles.radioLabel}>
-            {opt.value}
+            {opt.label}
           </label>
         </div>
       ))}

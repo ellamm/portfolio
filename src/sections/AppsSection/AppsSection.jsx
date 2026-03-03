@@ -1,4 +1,4 @@
-import AppCard from "../../../../components/AppCard/AppCard";
+import AppCard from "../../components/AppCard/AppCard";
 import NoResults from "./NoResults";
 import styles from "./AppsSection.module.css";
 
@@ -14,7 +14,6 @@ export default function AppsSection({
     <section
       className={styles.apps}
       aria-labelledby="apps-title"
-      role="main"
       id="main-content"
     >
       <h2 id="apps-title" className="srOnly">

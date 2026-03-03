@@ -2,31 +2,18 @@
   margin-bottom: var(--spacing-16);
 }
 
-/* Apps Grid */
+/* Apps Grid — mobile-first */
 .appsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--spacing-8);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6);
   margin-bottom: var(--spacing-8);
 }
 
-/* Grid responsive */
-@media (max-width: 480px) {
-  .appsGrid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-6);
-  }
-}
-
-@media (min-width: 1200px) {
+@media (min-width: 640px) {
   .appsGrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1800px) {
-  .appsGrid {
-    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-8);
   }
 }
 

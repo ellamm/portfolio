@@ -1,27 +1,32 @@
-import { Link, useLocation } from "react-router-dom";
-import { Home } from "lucide-react";
+import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
-  const location = useLocation();
-
   return (
     <nav
       className={styles.navbar}
-      role="navigation"
       aria-label="Main navigation"
     >
       <Link
         to="/"
-        className={styles.homeLink}
-        aria-label="Navigate to home page"
-        aria-current={location.pathname === "/" ? "page" : undefined}
+        className={styles.brand}
+        aria-label="Mihaela Drondu — home"
       >
-        <span>
-          <Home size={18} aria-hidden="true" />
-        </span>
-        <span>Home</span>
+        <span className={styles.brandMonogram} aria-hidden="true">MD</span>
+        <span className={styles.brandName}>Mihaela Drondu</span>
       </Link>
+
+      <div className={styles.navLinks}>
+        <a href="/#main-content" className={styles.navLink}>
+          Projects
+        </a>
+        <a
+          href="mailto:elamihai.mm@gmail.com"
+          className={styles.navLink}
+        >
+          Contact
+        </a>
+      </div>
     </nav>
   );
 }

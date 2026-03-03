@@ -1,6 +1,22 @@
 export const miniApps = [
   {
+    id: "calorieiq",
+    featured: true,
+    title: "CalorieIQ",
+    description:
+      "AI-powered nutrition platform for tracking meals, calories, and macros with intelligent food recognition.",
+    icon: "🥗",
+    liveDemo: "https://calorieiq.ro",
+    category: "Health",
+    type: "external",
+    tech: ["React", "AI", "REST API"],
+    difficulty: "Advanced",
+    features: ["AI food recognition", "Calorie tracking", "Macro breakdown"],
+    skills: ["API Integration", "React Hooks", "UI/UX"],
+  },
+  {
     id: "elearning-app",
+    featured: true,
     title: "eLearning Application",
     description:
       "Interactive learning management system with course tracking, search, and progress monitoring across multiple content types.",
@@ -13,13 +29,14 @@ export const miniApps = [
     difficulty: "Intermediate",
     features: ["Course search & filtering", "Progress tracking", "Pagination"],
     skills: [
-      "React Hooks (Custom hooks)",
-      "Testing (Vitest, React Testing Library, Playwright)",
+      "React Hooks",
+      "Testing (Vitest, Playwright)",
       "Routing",
     ],
   },
   {
     id: "superm",
+    featured: true,
     title: "SuperM - E-commerce Application",
     description:
       "Responsive online store with product catalog and cart management.",
@@ -62,8 +79,6 @@ export const miniApps = [
     features: ["Reusable components", "Props-driven UI", "Custom styling"],
     skills: ["Component Design", "Reusable Code", "UI/UX"],
   },
-
-  // 🔹 API & Data-driven Apps
   {
     id: "quizzical",
     title: "Quizzical",
@@ -72,23 +87,12 @@ export const miniApps = [
     route: "https://github.com/ellamm/quizzical",
     liveDemo: "https://quizzical-mm.netlify.app/",
     category: "Games",
-    skills: ["State Management", "Conditional Rendering", "Game Logic"],
-    difficulty: "Beginner",
-    features: ["Randomized questions", "Score tracking", "Replay option"],
     type: "external",
     tech: ["React", "CSS"],
+    difficulty: "Beginner",
+    features: ["Randomized questions", "Score tracking", "Replay option"],
+    skills: ["State Management", "Conditional Rendering", "Game Logic"],
   },
-  // {
-  //   id: "jokes-generator",
-  //   title: "Jokes Generator",
-  //   description: "Generate jokes instantly with API integration.",
-  //   icon: "😄",
-  //   route: "/apps/jokes-generator",
-  //   category: "API",
-  //   skills: ["API Integration", "Async Operations", "Error Handling"],
-  //   difficulty: "Beginner",
-  //   features: ["Random jokes", "Loading states", "Error recovery"],
-  // },
   {
     id: "eventbooster",
     title: "EventBooster",
@@ -108,18 +112,6 @@ export const miniApps = [
     ],
     skills: ["API Integration", "Async JavaScript", "Pagination Logic"],
   },
-  // {
-  //   id: "ip-finder",
-  //   title: "IP Address Finder",
-  //   description:
-  //     "Discover your location using IP geolocation and interactive maps.",
-  //   icon: "🌍",
-  //   route: "/apps/ip-finder",
-  //   category: "Geolocation",
-  //   skills: ["Geolocation API", "Maps Integration", "External APIs"],
-  //   difficulty: "Intermediate",
-  //   features: ["IP detection", "Map visualization", "Location data"],
-  // },
   {
     id: "unit-conversion",
     title: "Unit Conversion Tool",
@@ -134,8 +126,6 @@ export const miniApps = [
     features: ["Length, volume, weight conversions", "Simple UI"],
     skills: ["Math Functions", "State Handling", "UI Design"],
   },
-
-  // 🔹 Forms & Validation
   {
     id: "submission-form",
     title: "Submission Form",
@@ -143,21 +133,12 @@ export const miniApps = [
     icon: "📝",
     route: "/apps/submission-form",
     category: "Forms",
+    type: "internal",
+    tech: ["React", "CSS Modules"],
     skills: ["Form Handling", "Validation", "State Management"],
     difficulty: "Beginner",
     features: ["Real-time validation", "Error handling", "Success feedback"],
   },
-  // {
-  //   id: "password-validator",
-  //   title: "Password Validator",
-  //   description: "Password strength checker with visual feedback and tips.",
-  //   icon: "🔐",
-  //   route: "/apps/password-validator",
-  //   category: "Utility",
-  //   skills: ["RegEx", "Real-time Validation", "UX Design"],
-  //   difficulty: "Beginner",
-  //   features: ["Strength meter", "Security tips", "Live feedback"],
-  // },
   {
     id: "password-generator",
     title: "Password Generator",
@@ -172,8 +153,6 @@ export const miniApps = [
     features: ["Random password generation", "Special chars"],
     skills: ["Randomization", "User Input Validation"],
   },
-
-  // 🔹 Games & Logic
   {
     id: "tenzies",
     title: "Tenzies Dice Game",
@@ -188,39 +167,6 @@ export const miniApps = [
     features: ["Dice rolling", "Win detection", "Replay functionality"],
     skills: ["State Handling", "Game Logic", "Conditional Rendering"],
   },
-  // {
-  //   id: "rock-paper-scissors",
-  //   title: "Rock Paper Scissors",
-  //   description: "Classic game against computer with score tracking.",
-  //   icon: "✂️",
-  //   route: "/apps/rock-paper-scissors",
-  //   category: "Games",
-  //   skills: ["Game Logic", "AI Opponent", "Score Management"],
-  //   difficulty: "Beginner",
-  //   features: ["VS Computer", "Score tracking", "Game animations"],
-  // },
-  // {
-  //   id: "dice-rolling",
-  //   title: "Dice Rolling",
-  //   description: "Roll two virtual dice with random results and animations.",
-  //   icon: "🎲",
-  //   route: "/apps/dice-rolling",
-  //   category: "Games",
-  //   skills: ["Random Generation", "Animations", "Game Logic"],
-  //   difficulty: "Beginner",
-  //   features: ["Dual dice", "Smooth animations", "Result tracking"],
-  // },
-  // {
-  //   id: "coin-flipping",
-  //   title: "Coin Flipping",
-  //   description: "Flip a virtual coin with random results and animation.",
-  //   icon: "🪙",
-  //   route: "/apps/coin-flipping",
-  //   category: "Games",
-  //   skills: ["Random Generation", "CSS Animations", "Physics Simulation"],
-  //   difficulty: "Beginner",
-  //   features: ["Realistic flip", "Random results", "Flip animation"],
-  // },
   {
     id: "basketball-scoreboard",
     title: "Basketball Scoreboard",
@@ -235,19 +181,9 @@ export const miniApps = [
     features: ["Score tracking", "Increment/decrement buttons", "Simple UI"],
     skills: ["State Updates", "Event Handling", "UI/UX"],
   },
-  // {
-  //   id: "quiz-app",
-  //   title: "Quiz Application",
-  //   description: "Interactive quiz with multiple questions and final score.",
-  //   icon: "🧠",
-  //   route: "/apps/quiz-app",
-  //   category: "Education",
-  //   skills: ["State Management", "Score Calculation", "Multi-step Forms"],
-  //   difficulty: "Intermediate",
-  //   features: ["Multiple questions", "Score tracking", "Results display"],
-  // },
   {
     id: "assembly-endgame",
+    featured: true,
     title: "Assembly Endgame",
     description:
       "Word-guessing game themed around programming languages with retro UI.",
@@ -265,21 +201,6 @@ export const miniApps = [
     ],
     skills: ["Game Logic", "DOM Manipulation", "Responsive UI"],
   },
-
-  // 🔹 Productivity
-  // {
-  //   id: "todo-app",
-  //   title: "To-Do List",
-  //   description: "Manage tasks with add, delete, and completion tracking.",
-  //   icon: "✅",
-  //   route: "/apps/todo-app",
-  //   category: "Productivity",
-  //   skills: ["CRUD Operations", "Local Storage", "List Management"],
-  //   difficulty: "Beginner",
-  //   features: ["Add/delete tasks", "Completion toggle", "Persistent storage"],
-  // },
-
-  // 🔹 Landing Pages & Visual
   {
     id: "hometown",
     title: "Hometown",
@@ -336,18 +257,6 @@ export const miniApps = [
     features: ["Hero section", "Services grid", "Responsive design"],
     skills: ["Layout Design", "Responsive CSS", "Landing Page"],
   },
-  // {
-  //   id: "color-boxes",
-  //   title: "Color Box Application",
-  //   description: "Interactive grid of colored boxes with dynamic generation.",
-  //   icon: "🎨",
-  //   route: "/apps/color-boxes",
-  //   category: "Visual",
-  //   skills: ["Color Theory", "Grid Layouts", "Dynamic Rendering"],
-  //   difficulty: "Beginner",
-  //   features: ["Color generation", "Grid layout", "Interactive boxes"],
-  // },
-
   {
     id: "color-tool",
     title: "Color Tool",
@@ -356,11 +265,12 @@ export const miniApps = [
     icon: "🎨",
     route: "/apps/color-tool",
     category: "Visual",
+    type: "internal",
     tech: ["React", "JavaScript", "CSS Modules"],
     skills: [
-      "Hex Color Manipulation",
-      "React State Management",
-      "Accessibility (ARIA)",
+      "Hex Manipulation",
+      "State Management",
+      "Accessibility",
     ],
     difficulty: "Beginner",
     features: ["Hex color validation", "Toggle", "Real-time color previews"],

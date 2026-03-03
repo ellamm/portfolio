@@ -4,30 +4,83 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: var(--transition-normal);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-  justify-content: flex-end;
   height: 4rem;
-  padding: 0 var(--spacing-4);
+  padding: 0 var(--spacing-6);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  transition: var(--transition-normal);
 }
 
-.homeLink {
+.brand {
   display: flex;
   align-items: center;
-  gap: var(--spacing-2);
-  padding: var(--spacing-2) var(--spacing-4);
-  color: white;
+  gap: var(--spacing-3);
   text-decoration: none;
-  border-radius: var(--radius-lg);
-  font-weight: var(--font-weight-medium);
-  transition: var(--transition-fast);
-  font-size: var(--font-size-base);
+  color: var(--text-primary);
 }
 
-.homeLink:hover {
-  background: var(--gray-100);
-  color: var(--primary-600);
-  transform: translateY(-1px);
+.brandMonogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.5px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.brandName {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: var(--transition-fast);
+}
+
+.navLink:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.navLink[aria-current="page"] {
+  color: var(--accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 480px) {
+  .brandName {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 var(--spacing-4);
+  }
 }
