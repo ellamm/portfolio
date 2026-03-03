@@ -21,18 +21,18 @@
 .categoryButton {
   padding: 0.32rem 0.9rem;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(109, 40, 217, 0.18);
-  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--input-border);
+  background: var(--surface-bg);
   color: var(--color-muted);
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: var(--text-sm);
   font-weight: 600;
   cursor: pointer;
   transition: background var(--ease-fast), border-color var(--ease-fast), color var(--ease-fast);
 }
 
 .categoryButton:hover {
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--surface-bg-hover);
   border-color: rgba(109, 40, 217, 0.35);
   color: var(--color-heading);
 }
@@ -47,7 +47,7 @@
   background: var(--color-accent);
   color: #fff;
   border-color: var(--color-accent);
-  box-shadow: 0 3px 10px rgba(109, 40, 217, 0.25);
+  box-shadow: var(--shadow-sm);
 }
 
 .categoryButton.active:hover {
@@ -73,27 +73,25 @@
 .searchInput {
   width: 100%;
   padding: 0.55rem 1rem 0.55rem 2.5rem;
-  border: 1px solid rgba(109, 40, 217, 0.18);
+  border: 1px solid var(--input-border);
   border-radius: var(--radius-full);
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  background: rgba(255, 255, 255, 0.55);
+  font-size: var(--text-md);
+  background: var(--input-bg);
   color: var(--color-heading);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   transition: background var(--ease-fast), border-color var(--ease-fast), box-shadow var(--ease-fast);
 }
 
 .searchInput:hover {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--surface-bg-hover);
   border-color: rgba(109, 40, 217, 0.28);
 }
 
 .searchInput:focus {
   outline: none;
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--input-bg-focus);
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+  box-shadow: var(--input-focus-ring);
 }
 
 .searchInput::placeholder {

@@ -1,5 +1,6 @@
 import SectionCard from "../../components/SectionCard/SectionCard";
 import styles from "./SkillsSection.module.css";
+import sc from "../../components/SectionCard/SectionCard.module.css";
 
 const COLUMNS = [
   {
@@ -34,8 +35,7 @@ const languages = [
 
 export default function SkillsSection() {
   return (
-    <SectionCard id="skills">
-      <h2 className={styles.title}>What I bring</h2>
+    <SectionCard id="skills" title="What I bring">
       <div className={styles.grid}>
         {COLUMNS.map(({ accentColor, category, headline, desc, skills }) => (
           <div
@@ -58,7 +58,7 @@ export default function SkillsSection() {
       </div>
 
       <div className={styles.languagesRow}>
-        <h3 className={styles.langTitle}>Languages</h3>
+        <h3 className={sc.subHeading}>Languages</h3>
         <div className={styles.langList}>
           {languages.map(({ lang, level }) => (
             <span key={lang} className={styles.langChip}>

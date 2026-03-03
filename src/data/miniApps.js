@@ -37,7 +37,7 @@ export const miniApps = [
   {
     id: "superm",
     featured: true,
-    title: "SuperM - E-commerce Application",
+    title: "SuperM - E-commerce App",
     description:
       "Responsive online store with product catalog and cart management.",
     icon: "🛒",

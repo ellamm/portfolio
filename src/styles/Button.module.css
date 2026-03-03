@@ -5,8 +5,8 @@
   gap: var(--spacing-2);
   padding: var(--spacing-2) var(--spacing-4);
   border-radius: var(--radius-lg);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-md);
+  font-weight: 600;
   text-decoration: none;
   transition: transform var(--ease-fast), box-shadow var(--ease-fast);
   color: white;

@@ -105,8 +105,7 @@ export default function JourneySection() {
   }, [modal]);
 
   return (
-    <SectionCard id="journey">
-      <h2 className={styles.title}>My Journey</h2>
+    <SectionCard id="journey" title="My Journey">
 
       {/* ── Desktop winding timeline ── */}
       <div className={styles.timelineWrap}>

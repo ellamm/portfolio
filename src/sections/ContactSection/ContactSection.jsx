@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Download, Github, Linkedin, Mail } from "lucide-react";
 import SectionCard from "../../components/SectionCard/SectionCard";
 import styles from "./ContactSection.module.css";
+import sc from "../../components/SectionCard/SectionCard.module.css";
 
 export default function ContactSection() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
@@ -30,9 +31,8 @@ export default function ContactSection() {
   };
 
   return (
-    <SectionCard id="contact">
-      <h2 className={styles.title}>Let&apos;s Connect</h2>
-      <p className={styles.intro}>
+    <SectionCard id="contact" title="Let's Connect" compact>
+      <p className={sc.intro}>
         Open to new opportunities, collaborations, or just a good conversation.
         Drop me a message or find me on the links below.
       </p>
@@ -85,7 +85,7 @@ export default function ContactSection() {
         <div className={styles.infoSide}>
 
           <div className={styles.cvSection}>
-            <h3 className={styles.subHeading}>Download CV</h3>
+            <h3 className={sc.subHeading}>Download CV</h3>
             <a href="/cvs/Mihaela_Drondu_f_cv.pdf" download className={styles.cvRow}>
               <div className={styles.cvRowLeft}>
                 <Download size={15} aria-hidden="true" />
@@ -103,7 +103,7 @@ export default function ContactSection() {
           </div>
 
           <div className={styles.socialsSection}>
-            <h3 className={styles.subHeading}>Find me on</h3>
+            <h3 className={sc.subHeading}>Find me on</h3>
             <div className={styles.socialsStack}>
               <a href="https://www.linkedin.com/in/mihaela-mihai/" target="_blank"
                 rel="noopener noreferrer" className={styles.socialRow} aria-label="LinkedIn">

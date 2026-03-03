@@ -1,5 +1,5 @@
 /* ============================================================
-   AppCard — ice/glass project card with colored header band
+   AppCard — project card with colored header band
    ============================================================ */
 
 .card {
@@ -10,8 +10,8 @@
   padding: 1.25rem;
   height: 100%;
   border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--surface-bg);
+  border: 1px solid var(--surface-border);
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
@@ -34,7 +34,6 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  /* bleed to card edges */
   margin: -1.25rem -1.25rem 0.25rem -1.25rem;
   padding: 1rem 1.25rem;
   background: var(--hbg);
@@ -50,7 +49,7 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--color-heading);
   line-height: 1.3;
@@ -59,7 +58,7 @@
 
 /* ── Description ── */
 .desc {
-  font-size: 0.82rem;
+  font-size: var(--text-base);
   color: var(--color-muted);
   line-height: 1.55;
   margin: 0;
@@ -74,7 +73,7 @@
 }
 
 .tagLabel {
-  font-size: 0.62rem;
+  font-size: var(--text-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
@@ -88,7 +87,7 @@
 }
 
 .tag {
-  font-size: 0.72rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-full);
@@ -97,13 +96,13 @@
 
 .tag--tech {
   color: var(--color-accent);
-  background: rgba(109, 40, 217, 0.07);
-  border: 1px solid rgba(109, 40, 217, 0.14);
+  background: var(--accent-tint-bg);
+  border: 1px solid var(--accent-tint-border);
 }
 
 .tag--skill {
   color: var(--color-body);
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--surface-bg);
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -115,34 +114,20 @@
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.65);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
 }
 
 /* ── Difficulty badge ── */
 .diffBadge {
-  font-size: 0.68rem;
+  font-size: var(--text-xs);
   font-weight: 700;
   padding: 0.22rem 0.65rem;
   border-radius: var(--radius-full);
 }
 
-.beginner {
-  color: var(--color-beginner);
-  background: var(--color-beginner-bg);
-  border: 1px solid var(--color-beginner-border);
-}
-
-.intermediate {
-  color: var(--color-intermediate);
-  background: var(--color-intermediate-bg);
-  border: 1px solid var(--color-intermediate-border);
-}
-
-.advanced {
-  color: var(--color-advanced);
-  background: var(--color-advanced-bg);
-  border: 1px solid var(--color-advanced-border);
-}
+.beginner    { color: var(--color-beginner);     background: var(--color-beginner-bg);     border: 1px solid var(--color-beginner-border);     }
+.intermediate{ color: var(--color-intermediate); background: var(--color-intermediate-bg); border: 1px solid var(--color-intermediate-border); }
+.advanced    { color: var(--color-advanced);     background: var(--color-advanced-bg);     border: 1px solid var(--color-advanced-border);     }
 
 /* ── Action buttons ── */
 .buttons {
@@ -155,44 +140,36 @@
   display: inline-flex;
   align-items: center;
   gap: 0.28rem;
-  font-size: 0.74rem;
+  font-size: var(--text-sm);
   font-weight: 600;
   font-family: var(--font-body);
   color: var(--color-muted);
   padding: 0.28rem 0.7rem;
   border-radius: var(--radius-full);
   border: 1px solid rgba(0, 0, 0, 0.09);
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--surface-bg);
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: color var(--ease-fast), background var(--ease-fast), border-color var(--ease-fast);
 }
 
 .actionBtn:hover {
   color: var(--color-heading);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--surface-bg-hover);
   border-color: rgba(0, 0, 0, 0.16);
 }
 
-.liveBtn {
-  color: var(--color-accent);
-  background: rgba(109, 40, 217, 0.07);
-  border-color: rgba(109, 40, 217, 0.18);
-}
-
-.liveBtn:hover {
-  background: rgba(109, 40, 217, 0.13);
-  color: var(--color-accent);
-}
-
+.liveBtn,
 .launchBtn {
   color: var(--color-accent);
-  background: rgba(109, 40, 217, 0.07);
-  border-color: rgba(109, 40, 217, 0.18);
+  background: var(--accent-tint-bg);
+  border-color: var(--accent-tint-border);
 }
 
+.liveBtn:hover,
 .launchBtn:hover {
   background: rgba(109, 40, 217, 0.13);
+  color: var(--color-accent);
 }
 
 @media (prefers-reduced-motion: reduce) {

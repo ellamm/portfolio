@@ -9,20 +9,20 @@
   justify-content: space-between;
   width: 100%;
   height: 4rem;
-  padding: 0 var(--spacing-6);
-  background: var(--glass);
+  padding: 0 var(--space-6);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--glass-border);
-  transition: var(--transition-normal);
+  transition: background var(--ease-normal);
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: var(--spacing-3);
+  gap: var(--space-3);
   text-decoration: none;
-  color: var(--text-primary);
+  color: var(--color-heading);
 }
 
 .brandMonogram {
@@ -33,46 +33,46 @@
   height: 2.25rem;
   background: linear-gradient(135deg, #7c3aed, #6d28d9);
   border-radius: var(--radius-md);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-sm);
+  font-weight: 700;
+  font-size: var(--text-sm);
   letter-spacing: 0.5px;
   color: white;
   flex-shrink: 0;
 }
 
 .brandName {
-  font-weight: var(--font-weight-semibold);
-  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-size: var(--text-base);
   letter-spacing: -0.3px;
-  color: var(--text-primary);
+  color: var(--color-heading);
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  gap: var(--spacing-1);
+  gap: var(--space-1);
 }
 
 .navLink {
   display: flex;
   align-items: center;
-  padding: var(--spacing-2) var(--spacing-3);
-  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-3);
+  color: var(--color-muted);
   text-decoration: none;
   border-radius: var(--radius-md);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-sm);
-  transition: var(--transition-fast);
+  font-weight: 500;
+  font-size: var(--text-sm);
+  transition: background var(--ease-fast), color var(--ease-fast);
 }
 
 .navLink:hover {
-  background: var(--accent-light);
-  color: var(--accent);
+  background: var(--accent-tint-bg);
+  color: var(--color-accent);
 }
 
 .navLink[aria-current="page"] {
-  color: var(--accent);
-  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  font-weight: 600;
 }
 
 @media (max-width: 480px) {
@@ -81,6 +81,6 @@
   }
 
   .navbar {
-    padding: 0 var(--spacing-4);
+    padding: 0 var(--space-4);
   }
 }

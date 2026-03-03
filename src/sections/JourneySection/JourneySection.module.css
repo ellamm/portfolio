@@ -1,12 +1,3 @@
-/* ── Title ── */
-.title {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 1.9rem);
-  font-weight: 800;
-  color: var(--color-heading);
-  margin-bottom: clamp(1.25rem, 4vw, 2rem);
-}
-
 /* ═══════════════════════════════════════════
    Desktop winding timeline
    ─────────────────────────────────────────── */
@@ -41,11 +32,9 @@
   width: 114px;
   height: 114px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.72);
-  border: 2px solid rgba(109, 40, 217, 0.22);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.8) inset,
-    0 3px 12px rgba(0, 0, 0, 0.07);
+  background: var(--surface-bg);
+  border: 1.5px solid rgba(109, 40, 217, 0.28);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,11 +45,9 @@
   transition: background var(--ease-fast), border-color var(--ease-fast), box-shadow var(--ease-fast);
 }
 .circle:hover {
-  background: rgba(255, 255, 255, 0.92);
-  border-color: rgba(109, 40, 217, 0.45);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
-    0 6px 18px rgba(109, 40, 217, 0.12);
+  background: var(--surface-bg-hover);
+  border-color: rgba(109, 40, 217, 0.50);
+  box-shadow: var(--shadow-md);
 }
 .circleCurrent {
   border-color: rgba(109, 40, 217, 0.5);
@@ -69,7 +56,7 @@
 
 .year {
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: var(--text-base);
   font-weight: 800;
   color: var(--color-accent);
   pointer-events: none;
@@ -81,13 +68,13 @@
   display: block;
   width: 42px;
   height: 1px;
-  background: rgba(109, 40, 217, 0.2);
+  background: var(--accent-tint-border);
   flex-shrink: 0;
 }
 
 .circleRole {
   font-family: var(--font-body);
-  font-size: 0.65rem;
+  font-size: var(--text-sm);
   font-weight: 700;
   color: var(--color-heading);
   text-align: center;
@@ -112,7 +99,7 @@
 .labelBelow { top: 69px; }
 
 .summary {
-  font-size: 0.68rem;
+  font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-muted);
   text-align: center;
@@ -169,19 +156,19 @@
   padding-right: 0;
 }
 .mobileYear {
-  font-size: 0.7rem;
+  font-size: var(--text-xs);
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .mobileRole {
-  font-size: 0.92rem;
+  font-size: var(--text-base);
   font-weight: 700;
   color: var(--color-heading);
 }
 .mobileCompany {
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
   color: var(--color-muted);
 }
 
@@ -191,22 +178,6 @@
   .mobileTimeline { display: none; }
 }
 
-/* ── Footer ── */
-.footer {
-  text-align: center;
-  margin-top: 1.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(109, 40, 217, 0.08);
-}
-.footerLink {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: opacity var(--ease-fast);
-}
-.footerLink:hover { opacity: 0.68; }
-
 /* ═══════════════════════════════════════════
    Detail modal
    ─────────────────────────────────────────── */
@@ -214,9 +185,9 @@
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(15, 20, 40, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(15, 20, 40, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,15 +199,11 @@
   max-width: 480px;
   max-height: 85dvh;
   overflow-y: auto;
-  background: rgba(240, 245, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(240, 245, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius-xl);
   padding: 2rem 2rem 1.75rem;
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.7) inset,
-    0 24px 64px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18), 0 4px 12px rgba(0, 0, 0, 0.10);
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -248,8 +215,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: 1px solid rgba(109, 40, 217, 0.18);
-  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  background: var(--surface-bg);
   color: var(--color-muted);
   display: flex;
   align-items: center;
@@ -258,11 +225,11 @@
   transition: background var(--ease-fast), color var(--ease-fast);
 }
 .modalClose:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.98);
   color: var(--color-heading);
 }
 .modalDateRange {
-  font-size: 0.72rem;
+  font-size: var(--text-sm);
   font-weight: 700;
   color: var(--color-accent);
   letter-spacing: 0.05em;
@@ -277,7 +244,7 @@
   line-height: 1.25;
 }
 .modalCompany {
-  font-size: 0.82rem;
+  font-size: var(--text-base);
   color: var(--color-muted);
   margin-bottom: 0.25rem;
 }
@@ -288,11 +255,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
-  border-top: 1px solid rgba(109, 40, 217, 0.1);
+  border-top: 1px solid var(--accent-tint-border);
   padding-top: 0.85rem;
 }
 .modalBullets li {
-  font-size: 0.88rem;
+  font-size: var(--text-base);
   color: var(--color-body);
   line-height: 1.65;
   padding-left: 1.1rem;

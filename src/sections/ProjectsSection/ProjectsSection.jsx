@@ -32,8 +32,7 @@ export default function ProjectsSection() {
   }, [expanded]);
 
   return (
-    <SectionCard id="projects">
-      <h2 className={styles.title}>Projects</h2>
+    <SectionCard id="projects" title="Projects" compact>
       <p className={styles.intro}>
         A mix of learning projects, tools, and experiments built hands-on while
         upskilling in React and modern frontend. The top four are the builds I'm

@@ -11,7 +11,7 @@ import styles from "./SectionCard.module.css";
  *   className   — optional extra class merged onto the inner card div
  *   noAnimate   — skip the entrance animation (use for the hero)
  */
-export default function SectionCard({ id, children, className = "", sectionClassName = "", noAnimate = false }) {
+export default function SectionCard({ id, title, compact = false, children, className = "", sectionClassName = "", noAnimate = false }) {
   const [ref, inView] = useInView();
 
   return (
@@ -20,6 +20,7 @@ export default function SectionCard({ id, children, className = "", sectionClass
         ref={ref}
         className={`${styles.card} ${className} ${noAnimate || inView ? styles.visible : ""}`}
       >
+        {title && <h2 className={compact ? styles.titleCompact : styles.title}>{title}</h2>}
         {children}
       </div>
     </section>
