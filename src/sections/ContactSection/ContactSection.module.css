@@ -111,6 +111,12 @@
 }
 .resetBtn:hover { background: rgba(109, 40, 217, 0.06); }
 
+.errorMsg {
+  font-size: 0.82rem;
+  color: #dc2626;
+  margin: 0;
+}
+
 /* ── Right side ── */
 .infoSide {
   display: flex;

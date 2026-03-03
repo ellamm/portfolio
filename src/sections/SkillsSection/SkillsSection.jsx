@@ -1,42 +1,28 @@
-import {
-  Code2, Palette, GitBranch, Globe, Accessibility, Database,
-  Users, ClipboardList, BarChart2, Flag, Cpu, Layers,
-  Route, MessageSquare, AlertCircle,
-} from "lucide-react";
 import SectionCard from "../../components/SectionCard/SectionCard";
 import styles from "./SkillsSection.module.css";
 
-const frontendSkills = [
-  { Icon: Code2,        label: "React & JavaScript (ES6+)" },
-  { Icon: Palette,      label: "HTML5, CSS3 & Responsive Design" },
-  { Icon: Layers,       label: "Component-Based Architecture" },
-  { Icon: Globe,        label: "REST APIs & JSON" },
-  { Icon: GitBranch,    label: "Git & GitHub" },
-  { Icon: Accessibility,label: "Accessibility (ARIA, WCAG)" },
-];
-
-const leadershipSkills = [
-  { Icon: Users,        label: "Team Management (15+ engineers)" },
-  { Icon: Cpu,          label: "C++ & Linux Engineering" },
-  { Icon: Code2,        label: "Code Review & Standards" },
-  { Icon: BarChart2,    label: "KPI Tracking & Reporting" },
-  { Icon: MessageSquare,label: "Cross-team Coordination" },
-  { Icon: Flag,         label: "Hiring & Performance Reviews" },
-];
-
-const pmSkills = [
-  { Icon: Route,         label: "Agile / Scrum" },
-  { Icon: ClipboardList, label: "Product Ownership & Backlog" },
-  { Icon: AlertCircle,   label: "Critical Issue Escalation" },
-  { Icon: MessageSquare, label: "Stakeholder Management" },
-  { Icon: Database,      label: "Jira & Confluence" },
-  { Icon: BarChart2,     label: "Risk & Dependency Management" },
-];
-
 const COLUMNS = [
-  { title: "Frontend Development", Icon: Code2,        skills: frontendSkills  },
-  { title: "Technical Leadership",  Icon: Users,        skills: leadershipSkills },
-  { title: "PM & Agile",            Icon: ClipboardList, skills: pmSkills        },
+  {
+    accentColor: "#7c3aed",
+    category: "Frontend",
+    headline: "I build",
+    desc: "Modern, accessible interfaces with a focus on craft.",
+    skills: ["React & JavaScript", "HTML5 & CSS3", "Responsive Design", "REST APIs & JSON", "Git & GitHub", "Accessibility (WCAG)"],
+  },
+  {
+    accentColor: "#0284c7",
+    category: "Leadership",
+    headline: "I lead",
+    desc: "Engineering teams across planning, delivery, and growth.",
+    skills: ["Team of 15+ engineers", "C++ & Linux systems", "Code review & standards", "Hiring & performance", "Cross-team coordination", "KPI tracking"],
+  },
+  {
+    accentColor: "#059669",
+    category: "Product",
+    headline: "I align",
+    desc: "From backlog to stakeholders — end to end.",
+    skills: ["Agile / Scrum", "Product ownership", "Stakeholder management", "Risk & dependency mgmt", "Jira & Confluence", "Critical escalation"],
+  },
 ];
 
 const languages = [
@@ -49,22 +35,24 @@ const languages = [
 export default function SkillsSection() {
   return (
     <SectionCard id="skills">
-      <h2 className={styles.title}>Skills</h2>
+      <h2 className={styles.title}>What I bring</h2>
       <div className={styles.grid}>
-        {COLUMNS.map(({ title, Icon, skills }) => (
-          <div key={title} className={styles.col}>
-            <h3 className={styles.colTitle}>
-              <Icon size={15} aria-hidden="true" />
-              {title}
-            </h3>
-            <ul className={styles.list}>
-              {skills.map(({ Icon: SkillIcon, label }) => (
-                <li key={label} className={styles.item}>
-                  <SkillIcon size={13} aria-hidden="true" />
-                  {label}
-                </li>
+        {COLUMNS.map(({ accentColor, category, headline, desc, skills }) => (
+          <div
+            key={category}
+            className={styles.capCard}
+            style={{ "--card-accent": accentColor }}
+          >
+            <div>
+              <span className={styles.capCategory}>{category}</span>
+              <h3 className={styles.capHeadline}>{headline}</h3>
+              <p className={styles.capDesc}>{desc}</p>
+            </div>
+            <div className={styles.chips}>
+              {skills.map((s) => (
+                <span key={s} className={styles.chip}>{s}</span>
               ))}
-            </ul>
+            </div>
           </div>
         ))}
       </div>

@@ -5,17 +5,28 @@ import styles from "./ContactSection.module.css";
 
 export default function ContactSection() {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const handleChange = (e) => setFormState((s) => ({ ...s, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, message } = formState;
-    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-    const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
-    window.location.href = `mailto:elamihai.mm@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
+    setStatus("sending");
+    try {
+      const res = await fetch("https://formspree.io/f/mojngqgd", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(formState),
+      });
+      if (res.ok) {
+        setStatus("sent");
+        setFormState({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
@@ -30,10 +41,10 @@ export default function ContactSection() {
 
         {/* Left: form */}
         <div className={styles.formSide}>
-          {sent ? (
+          {status === "sent" ? (
             <div className={styles.thankYou}>
-              <p>Thanks for reaching out — your email client should have opened.</p>
-              <button className={styles.resetBtn} onClick={() => setSent(false)}>
+              <p>Message sent — I&apos;ll get back to you soon!</p>
+              <button className={styles.resetBtn} onClick={() => setStatus("idle")}>
                 Send another message
               </button>
             </div>
@@ -59,8 +70,12 @@ export default function ContactSection() {
                   className={styles.textarea} value={formState.message}
                   onChange={handleChange} placeholder="What would you like to discuss?" />
               </div>
-              <button type="submit" className={styles.sendBtn}>
-                <Mail size={16} aria-hidden="true" /> Send Message
+              {status === "error" && (
+                <p className={styles.errorMsg}>Something went wrong. Please try again.</p>
+              )}
+              <button type="submit" className={styles.sendBtn} disabled={status === "sending"}>
+                <Mail size={16} aria-hidden="true" />
+                {status === "sending" ? "Sending…" : "Send Message"}
               </button>
             </form>
           )}
@@ -78,10 +93,10 @@ export default function ContactSection() {
               </div>
               <span className={styles.cvBadge}>PDF</span>
             </a>
-            <a href="/cvs/Mihaela_Drondu_a_cv.pdf" download className={styles.cvRow}>
+            <a href="/cvs/Mihaela_Drondu_m_cv.pdf" download className={styles.cvRow}>
               <div className={styles.cvRowLeft}>
                 <Download size={15} aria-hidden="true" />
-                <span>Combined CV</span>
+                <span>Technical Project Manager CV</span>
               </div>
               <span className={styles.cvBadge}>PDF</span>
             </a>

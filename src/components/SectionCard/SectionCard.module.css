@@ -16,11 +16,9 @@
 
 /* ── Glass card ── */
 .card {
-  /* Fill viewport minus the 20px gutters on each side */
   width: calc(100vw - 40px);
-  max-width: 100%;
+  max-width: 75%;
 
-  /* Very transparent tint — stars show through clearly, no blur smearing */
   background: rgba(210, 228, 248, 0.14);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
@@ -31,11 +29,27 @@
     0 1px 0 rgba(255, 255, 255, 0.45) inset,
     0 8px 36px rgba(109, 40, 217, 0.07),
     0 2px 8px rgba(0, 0, 0, 0.04);
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
-/* ── Shared section title ─────────────────────────────────── */
-/* Import this class from SectionCard.module.css when you need
-   the standard section title style (avoids duplication).      */
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Shared section title ── */
 .title {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 4vw, 1.9rem);

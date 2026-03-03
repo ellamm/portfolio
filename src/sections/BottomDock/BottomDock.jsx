@@ -2,25 +2,22 @@ import { House, BookOpen, Route, Layers, FolderOpen, Mail } from "lucide-react";
 import styles from "./BottomDock.module.css";
 
 const DOCK_ITEMS = [
-  { id: "hero",     label: "Home",       Icon: House      },
-  { id: "story",    label: "Story",      Icon: BookOpen   },
-  { id: "journey",  label: "My Journey", Icon: Route      },
-  { id: "skills",   label: "Skills",     Icon: Layers     },
-  { id: "projects", label: "Projects",   Icon: FolderOpen },
-  { id: "contact",  label: "Contact",    Icon: Mail       },
+  { id: "hero",     label: "Home",     Icon: House      },
+  { id: "story",    label: "Story",    Icon: BookOpen   },
+  { id: "journey",  label: "Journey",  Icon: Route      },
+  { id: "skills",   label: "Skills",   Icon: Layers     },
+  { id: "projects", label: "Projects", Icon: FolderOpen },
+  { id: "contact",  label: "Contact",  Icon: Mail       },
 ];
 
-export default function BottomDock({ activeSection, embedded = false }) {
+export default function BottomDock({ activeSection }) {
   const handleClick = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <nav
-      className={`${styles.dock} ${embedded ? styles.dockEmbedded : ""}`}
-      aria-label="Main navigation"
-    >
+    <nav className={styles.dock} aria-label="Main navigation">
       {DOCK_ITEMS.map(({ id, label, Icon }) => {
         const isActive = activeSection === id;
         return (

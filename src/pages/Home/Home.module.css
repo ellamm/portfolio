@@ -7,25 +7,26 @@
 
 /* ============================================================
    Hero section override — equal 20px gap on all sides
-   (no extra bottom clearance; dock lives inside the card)
    ============================================================ */
 .heroSection {
-  padding: 20px;
+  /* large top gap so background shows above the card */
+  padding: clamp(5rem, 20vh, 12rem) 20px 20px;
 }
 
 /* ============================================================
-   Hero card — fills the full viewport minus the 20px borders
+   Hero card — content-sized, sits lower in the viewport
    ============================================================ */
 .heroCard {
-  position: relative;          /* anchor for the absolutely positioned dock */
-  height: calc(100dvh - 40px);
+  position: relative;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 2rem;
-  padding-bottom: 6rem;        /* keep content clear of the dock */
+  gap: 1.75rem;
+  padding-top: clamp(2.5rem, 5vh, 4rem);
+  padding-bottom: clamp(3.5rem, 6vh, 5rem);
 }
 
 /* ── Name ── */
@@ -48,8 +49,8 @@
 
 /* ── Profile photo wrapper — circle clip ── */
 .photoWrap {
-  width:  clamp(170px, 28vw, 220px);
-  height: clamp(170px, 28vw, 220px);
+  width:  clamp(150px, 24vw, 200px);
+  height: clamp(150px, 24vw, 200px);
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
@@ -71,8 +72,8 @@
 
 /* ── MD monogram fallback ── */
 .photoFallback {
-  width:  clamp(170px, 28vw, 220px);
-  height: clamp(170px, 28vw, 220px);
+  width:  clamp(150px, 24vw, 200px);
+  height: clamp(150px, 24vw, 200px);
   border-radius: 50%;
   background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
   display: flex;
@@ -87,26 +88,37 @@
   box-shadow: 0 4px 20px rgba(109, 40, 217, 0.25);
 }
 
-/* ── Role tags row ── */
+/* ── Animated role pill ── */
 .heroRoles {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  min-height: 2.2rem;
 }
 
 .heroRole {
   font-family: var(--font-body);
-  font-size: clamp(0.78rem, 1.8vw, 0.92rem);
+  font-size: clamp(0.82rem, 1.8vw, 0.95rem);
   font-weight: 600;
   color: var(--color-body);
-  padding: 0.28rem 0.85rem;
+  padding: 0.3rem 1rem;
   border-radius: var(--radius-full);
   background: rgba(109, 40, 217, 0.07);
   border: 1px solid rgba(109, 40, 217, 0.14);
   letter-spacing: 0.02em;
-  white-space: nowrap;
+}
+
+/* Blinking cursor */
+.cursor {
+  display: inline-block;
+  margin-left: 1px;
+  color: var(--color-accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 /* ── Short bio ── */
@@ -116,5 +128,40 @@
   font-weight: 400;
   color: var(--color-muted);
   line-height: 1.65;
-  max-width: 52ch;
+  max-width: 48ch;
+}
+
+/* ── Scroll indicator ── */
+/* ── Scroll prompt — between hero and story ── */
+.scrollPrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  width: 100%;
+  padding: 1rem 0 1.5rem;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+
+  animation: bounce 2.2s ease-in-out infinite;
+  transition: opacity 0.2s ease;
+}
+
+.scrollPrompt:hover {
+  opacity: 0.9;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(8px); }
 }
