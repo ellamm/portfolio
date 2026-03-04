@@ -14,23 +14,19 @@
   margin-top: 1.25rem;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 860px) {
   .featuredGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1200px) {
   .featuredGrid {
     grid-template-columns: repeat(3, 1fr);
   }
 
   /* Card 1: wide left */
   .featuredGrid > *:nth-child(1) { grid-column: 1 / 3; }
-
-  /* Card 2: normal right — auto-placed col 3 */
-
-  /* Card 3: normal left — auto-placed col 1 */
 
   /* Card 4: wide right */
   .featuredGrid > *:nth-child(4) { grid-column: 2 / 4; }
@@ -44,13 +40,13 @@
   margin-top: 1.25rem;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 860px) {
   .allGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1200px) {
   .allGrid {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(200px, auto);

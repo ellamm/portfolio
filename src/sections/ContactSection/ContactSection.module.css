@@ -34,7 +34,7 @@
   gap: 2rem;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1200px) {
   .layout {
     flex-direction: row;
     align-items: flex-start;
@@ -50,7 +50,7 @@
   flex: 1 1 0;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1200px) {
   .reachSide {
     padding-right: 2.5rem;
   }
@@ -185,7 +185,7 @@
   display: none;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1200px) {
   .divider {
     display: block;
     width: 1px;
@@ -204,7 +204,7 @@
   flex: 1 1 0;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 1200px) {
   .formSide {
     padding-left: 2.5rem;
   }

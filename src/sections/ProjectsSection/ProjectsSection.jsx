@@ -1,11 +1,17 @@
-import { useState, useRef, useId, useCallback, useMemo } from "react";
+import { useState, useRef, useId, useCallback, useMemo, lazy, Suspense } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { miniApps, getCategories } from "../../data/miniApps";
 import useAppFiltering from "../../hooks/useAppFiltering";
 import AppCard from "../../components/AppCard/AppCard";
 import FiltersSection from "../FiltersSection/FiltersSection";
 import SectionCard from "../../components/SectionCard/SectionCard";
+import AppModal from "../../components/AppModal/AppModal";
 import styles from "./ProjectsSection.module.css";
+
+const APP_COMPONENTS = {
+  "submission-form": lazy(() => import("../../apps/submission-form/SubmissionForm")),
+  "color-tool":      lazy(() => import("../../apps/color-tool/ColorTool")),
+};
 
 const featuredApps = miniApps.filter((a) => a.featured);
 const extraCount = miniApps.length - featuredApps.length;
@@ -14,6 +20,7 @@ export default function ProjectsSection() {
   const [expanded, setExpanded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [openApp, setOpenApp] = useState(null);
   const searchInputRef = useRef(null);
   const searchId = useId();
   const filtersId = useId();
@@ -53,7 +60,7 @@ export default function ProjectsSection() {
       {!showAll ? (
         <>
           <div className={styles.featuredGrid}>
-            {featuredApps.map((app) => <AppCard key={app.id} app={app} />)}
+            {featuredApps.map((app) => <AppCard key={app.id} app={app} onLaunch={setOpenApp} />)}
           </div>
           <div className={styles.loadMoreWrap}>
             <button className={styles.loadMoreBtn} onClick={() => setExpanded(true)}>
@@ -74,7 +81,7 @@ export default function ProjectsSection() {
             </div>
           ) : (
             <div className={styles.allGrid}>
-              {filteredApps.map((app) => <AppCard key={app.id} app={app} />)}
+              {filteredApps.map((app) => <AppCard key={app.id} app={app} onLaunch={setOpenApp} />)}
             </div>
           )}
           {!isFiltering && (
@@ -87,6 +94,16 @@ export default function ProjectsSection() {
           )}
         </>
       )}
+      {openApp && APP_COMPONENTS[openApp.id] && (() => {
+        const AppComponent = APP_COMPONENTS[openApp.id];
+        return (
+          <AppModal app={openApp} onClose={() => setOpenApp(null)}>
+            <Suspense fallback={<div style={{ padding: "2rem", textAlign: "center", color: "var(--color-muted)" }}>Loading…</div>}>
+              <AppComponent />
+            </Suspense>
+          </AppModal>
+        );
+      })()}
     </SectionCard>
   );
 }

@@ -112,9 +112,19 @@
 /* ── Animated role pill ── */
 .heroRoles {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   min-height: 2.2rem;
+}
+
+@media (min-width: 640px) {
+  .heroRoles {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }
 
 .heroRole {

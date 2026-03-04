@@ -17,7 +17,6 @@
 /* ── Glass card ── */
 .card {
   width: calc(100vw - 40px);
-  max-width: 75%;
 
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
@@ -34,6 +33,18 @@
 .card.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+  .card {
+    max-width: 88%;
+  }
+}
+
+@media (min-width: 860px) {
+  .card {
+    max-width: 75%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

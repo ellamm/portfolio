@@ -103,7 +103,7 @@
 }
 
 /* ── Tablet+: categories left, search right on same row ── */
-@media (min-width: 480px) {
+@media (min-width: 640px) {
   .filters {
     flex-direction: row;
     align-items: flex-start;

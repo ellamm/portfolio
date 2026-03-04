@@ -1,12 +1,9 @@
 import { Component, lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Navbar from "./components/Navbar/Navbar";
 
 const Home = lazy(() => import("./pages/Home/Home"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
-const SubmissionForm = lazy(() => import("./apps/submission-form/SubmissionForm"));
-const ColorTool = lazy(() => import("./apps/color-tool/ColorTool"));
 
 class ErrorBoundary extends Component {
   state = { hasError: false };
@@ -27,22 +24,14 @@ class ErrorBoundary extends Component {
 }
 
 function AppLayout() {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
-
   return (
-    <div className={isHome ? "appHome" : "app"}>
-      {!isHome && <Navbar />}
-      <main className={isHome ? "" : "main-container"}>
-        <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/apps/submission-form" element={<SubmissionForm />} />
-            <Route path="/apps/color-tool" element={<ColorTool />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </main>
+    <div className="appHome">
+      <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }

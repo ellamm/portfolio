@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Github, ExternalLink, Play } from "lucide-react";
 import styles from "./AppCard.module.css";
 
@@ -20,11 +19,11 @@ function getHeaderColor(category) {
   return CATEGORY_COLORS[category] ?? DEFAULT_COLOR;
 }
 
-export default function AppCard({ app }) {
+export default function AppCard({ app, onLaunch }) {
   return app.type === "external" ? (
     <ExternalCard app={app} />
   ) : (
-    <InternalCard app={app} />
+    <InternalCard app={app} onLaunch={onLaunch} />
   );
 }
 
@@ -59,23 +58,25 @@ function ExternalCard({ app }) {
   );
 }
 
-function InternalCard({ app }) {
+function InternalCard({ app, onLaunch }) {
   const color = getHeaderColor(app.category);
   return (
-    <Link to={app.route} className={styles.cardLink}>
-      <article className={styles.card}>
-        <CardHeader app={app} color={color} />
-        <p className={styles.desc}>{app.description}</p>
-        <TagSection label="Tech Stack" tags={app.tech} type="tech" />
-        <TagSection label="Skills" tags={app.skills} type="skill" />
-        <footer className={styles.footer}>
-          <DifficultyBadge difficulty={app.difficulty} />
-          <span className={`${styles.actionBtn} ${styles.launchBtn}`}>
-            <Play size={12} aria-hidden="true" /> Launch
-          </span>
-        </footer>
-      </article>
-    </Link>
+    <article
+      className={styles.card}
+      onClick={() => onLaunch?.(app)}
+      style={{ cursor: "pointer" }}
+    >
+      <CardHeader app={app} color={color} />
+      <p className={styles.desc}>{app.description}</p>
+      <TagSection label="Tech Stack" tags={app.tech} type="tech" />
+      <TagSection label="Skills" tags={app.skills} type="skill" />
+      <footer className={styles.footer}>
+        <DifficultyBadge difficulty={app.difficulty} />
+        <span className={`${styles.actionBtn} ${styles.launchBtn}`}>
+          <Play size={12} aria-hidden="true" /> Launch
+        </span>
+      </footer>
+    </article>
   );
 }
 
