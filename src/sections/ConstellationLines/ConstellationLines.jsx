@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { memo, useEffect, useRef } from "react";
 import styles from "./ConstellationLines.module.css";
 
 // 6-pointed star polygon centered at (0, 0)
@@ -18,6 +18,17 @@ const STAR_LG = starPts(1.05);   // sparkle terminal star
 
 // Detect reduced motion preference once at module load time
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Which constellation indices light up per section (others dim to 0.15 opacity)
+// null = hero default: all fully lit
+const SECTION_CONSTELLATIONS = {
+  hero:     null,
+  story:    new Set([1, 2, 8]),   // top-left, top-center, upper-mid cross
+  journey:  new Set([3, 4]),      // mid-left dipper, mid-right chevron
+  skills:   new Set([8, 9]),      // upper-mid cross, mid diamond
+  projects: new Set([5, 6, 9]),   // bottom-left, bottom-right, diamond
+  contact:  new Set([5, 6, 7]),   // bottom constellations + orion belt
+};
 
 // 10 constellations spread across the full viewport (viewBox 0 0 100 100)
 const CONSTELLATIONS = [
@@ -107,17 +118,52 @@ const LONE_STARS = [
   {cx:55,cy:62,d:"1.1s",dur:"2.5s"},
 ];
 
-export default memo(function ConstellationLines() {
+export default memo(function ConstellationLines({ activeSection = "hero" }) {
+  const svgRef = useRef(null);
+
+  // Mouse parallax — direct DOM manipulation, no React re-renders
+  useEffect(() => {
+    if (reducedMotion) return;
+    let rafId;
+    let targetX = 0, targetY = 0, currentX = 0, currentY = 0;
+
+    const onMove = (e) => {
+      targetX = (e.clientX / window.innerWidth  - 0.5) * 1.4;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 1.4;
+    };
+
+    const tick = () => {
+      currentX += (targetX - currentX) * 0.06;
+      currentY += (targetY - currentY) * 0.06;
+      if (svgRef.current) {
+        svgRef.current.style.transform = `translate(${currentX}%, ${currentY}%)`;
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("mousemove", onMove, { passive: true });
+    rafId = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(rafId);
+    };
+  }, []);
+
+  const litSet = SECTION_CONSTELLATIONS[activeSection] ?? null;
+
   return (
     <svg
+      ref={svgRef}
       className={styles.svg}
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       aria-hidden="true"
       focusable="false"
     >
-      {CONSTELLATIONS.map((c, ci) => (
-        <g key={ci}>
+      {CONSTELLATIONS.map((c, ci) => {
+        const isDimmed = litSet !== null && !litSet.has(ci);
+        return (
+        <g key={ci} className={`${styles.constGroup} ${isDimmed ? styles.dimmed : ""}`}>
           {/* Connection lines */}
           {c.lines.map(([x1, y1, x2, y2], li) => (
             <line
@@ -179,7 +225,8 @@ export default memo(function ConstellationLines() {
             </g>
           ))}
         </g>
-      ))}
+        );
+      })}
 
       {/* Scattered lone stars */}
       {LONE_STARS.map((s, i) => (

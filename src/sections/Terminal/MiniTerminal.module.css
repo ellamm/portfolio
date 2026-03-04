@@ -1,0 +1,94 @@
+.terminal {
+  width: 100%;
+  max-width: 340px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #1e1e2e;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.terminal:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.32), 0 0 0 1px rgba(109, 40, 217, 0.35);
+  transform: translateY(-2px);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.title {
+  margin-left: 0.4rem;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.65rem;
+  color: rgba(205, 214, 244, 0.4);
+  letter-spacing: 0.04em;
+}
+
+.body {
+  padding: 0.75rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.line {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.prompt {
+  color: #a6e3a1;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cmd {
+  color: #cdd6f4;
+  margin-left: 0.4rem;
+}
+
+.out {
+  color: rgba(205, 214, 244, 0.55);
+  padding-left: 0;
+  font-style: italic;
+}
+
+.cursor {
+  display: inline-block;
+  color: #a6e3a1;
+  animation: blink 1s step-end infinite;
+  margin-left: 1px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.tryHint {
+  font-size: 0.62rem;
+  color: rgba(205, 214, 244, 0.28);
+  font-style: italic;
+  margin-top: 0.35rem;
+  letter-spacing: 0.02em;
+}

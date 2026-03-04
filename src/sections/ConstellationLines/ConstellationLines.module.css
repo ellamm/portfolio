@@ -1,8 +1,19 @@
 .svg {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
+  /* slightly oversized so parallax shift never reveals an edge */
+  inset: -2%;
+  width: 104%;
+  height: 104%;
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
+}
+
+/* Section-driven constellation brightening */
+.constGroup {
+  transition: opacity 1.4s ease;
+}
+
+.dimmed {
+  opacity: 0.15;
 }

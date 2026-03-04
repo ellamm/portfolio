@@ -15,14 +15,14 @@
   /* ── Colour palette ─────────────────────────────────────── */
   --color-heading:  #1a1a2e;   /* near-black navy */
   --color-body:     #38406a;
-  --color-muted:    #5e6a8a;
+  --color-muted:    #4a5470;
   --color-accent:   #6d28d9;   /* deep violet */
   --color-accent-2: #8b5cf6;   /* lighter violet */
 
   /* ── Glass tokens — section card outer surfaces ─────────── */
-  --glass-bg:     rgba(255, 255, 255, 0.11);
-  --glass-border: rgba(255, 255, 255, 0.24);
-  --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.30) inset, 0 4px 16px rgba(0, 0, 0, 0.07);
+  --glass-bg:     rgba(255, 255, 255, 0.35);
+  --glass-border: rgba(255, 255, 255, 0.60);
+  --glass-shadow: 0 1px 0 rgba(255, 255, 255, 0.50) inset, 0 4px 16px rgba(0, 0, 0, 0.08);
 
   /* ── Surface tokens — inner cards, rows, chips ───────────── */
   --surface-bg:       rgba(255, 255, 255, 0.55);
@@ -61,8 +61,8 @@
   --ease-normal: 250ms ease-in-out;
 
   /* ── Text size scale ─────────────────────────────────────── */
-  --text-xs:   0.75rem;  /* badges, labels, micro text        */
-  --text-sm:   0.85rem;  /* tags, chips, secondary UI         */
+  --text-xs:   0.8rem;   /* badges, labels, micro text        */
+  --text-sm:   0.9rem;   /* tags, chips, secondary UI         */
   --text-md:   0.95rem;  /* body copy, buttons, descriptions  */
   --text-base: 1rem;     /* inputs, primary UI text           */
   --text-lg:   1.05rem;  /* base / large UI text              */

@@ -6,7 +6,8 @@ export default function Footer() {
   return (
     <footer className={styles.footer}>
       <p className={styles.copy}>
-        &copy; {year} Mihaela Drondu. All rights reserved.
+        Built with React, caffeine, and 9 years of engineering opinions.
+        &copy; {year} Mihaela Drondu.
       </p>
     </footer>
   );

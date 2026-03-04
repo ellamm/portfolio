@@ -25,7 +25,8 @@
 .cardLink {
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -63,6 +64,20 @@
   line-height: 1.55;
   margin: 0;
   flex: 1;
+}
+
+/* ── Category chip in header ── */
+.categoryChip {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid var(--hborder);
+  color: var(--color-body);
+  white-space: nowrap;
 }
 
 /* ── Tag sections ── */
@@ -111,6 +126,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: auto;
   padding-top: 0.75rem;
@@ -134,6 +150,7 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
+  margin-left: auto;
 }
 
 .actionBtn {

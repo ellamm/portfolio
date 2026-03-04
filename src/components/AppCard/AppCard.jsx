@@ -3,18 +3,18 @@ import { Github, ExternalLink, Play } from "lucide-react";
 import styles from "./AppCard.module.css";
 
 const CATEGORY_COLORS = {
-  Health:        { bg: "rgba(5, 150, 105, 0.13)",   border: "rgba(5, 150, 105, 0.22)"   },
-  Education:     { bg: "rgba(79, 70, 229, 0.13)",   border: "rgba(79, 70, 229, 0.22)"   },
-  "E-commerce":  { bg: "rgba(8, 145, 178, 0.13)",   border: "rgba(8, 145, 178, 0.22)"   },
-  Games:         { bg: "rgba(124, 58, 237, 0.13)",  border: "rgba(124, 58, 237, 0.22)"  },
-  Utility:       { bg: "rgba(245, 158, 11, 0.13)",  border: "rgba(245, 158, 11, 0.22)"  },
-  Forms:         { bg: "rgba(225, 29, 72, 0.11)",   border: "rgba(225, 29, 72, 0.20)"   },
-  "UI Library":  { bg: "rgba(79, 70, 229, 0.12)",   border: "rgba(79, 70, 229, 0.20)"   },
-  API:           { bg: "rgba(8, 145, 178, 0.12)",   border: "rgba(8, 145, 178, 0.20)"   },
-  "Landing Page":{ bg: "rgba(217, 70, 239, 0.10)",  border: "rgba(217, 70, 239, 0.18)"  },
-  Visual:        { bg: "rgba(245, 158, 11, 0.12)",  border: "rgba(245, 158, 11, 0.20)"  },
+  Health:        { bg: "rgba(5, 150, 105, 0.18)",   border: "rgba(5, 150, 105, 0.38)"   },
+  Education:     { bg: "rgba(79, 70, 229, 0.18)",   border: "rgba(79, 70, 229, 0.38)"   },
+  "E-commerce":  { bg: "rgba(8, 145, 178, 0.18)",   border: "rgba(8, 145, 178, 0.38)"   },
+  Games:         { bg: "rgba(124, 58, 237, 0.18)",  border: "rgba(124, 58, 237, 0.38)"  },
+  Utility:       { bg: "rgba(245, 158, 11, 0.18)",  border: "rgba(245, 158, 11, 0.38)"  },
+  Forms:         { bg: "rgba(225, 29, 72, 0.16)",   border: "rgba(225, 29, 72, 0.34)"   },
+  "UI Library":  { bg: "rgba(79, 70, 229, 0.18)",   border: "rgba(79, 70, 229, 0.36)"   },
+  API:           { bg: "rgba(8, 145, 178, 0.18)",   border: "rgba(8, 145, 178, 0.36)"   },
+  "Landing Page":{ bg: "rgba(217, 70, 239, 0.16)",  border: "rgba(217, 70, 239, 0.34)"  },
+  Visual:        { bg: "rgba(245, 158, 11, 0.18)",  border: "rgba(245, 158, 11, 0.36)"  },
 };
-const DEFAULT_COLOR = { bg: "rgba(99, 102, 241, 0.12)", border: "rgba(99, 102, 241, 0.20)" };
+const DEFAULT_COLOR = { bg: "rgba(99, 102, 241, 0.18)", border: "rgba(99, 102, 241, 0.36)" };
 
 function getHeaderColor(category) {
   return CATEGORY_COLORS[category] ?? DEFAULT_COLOR;
@@ -87,6 +87,9 @@ function CardHeader({ app, color }) {
     >
       <span className={styles.icon}>{app.icon}</span>
       <h3 className={styles.title}>{app.title}</h3>
+      {app.category && (
+        <span className={styles.categoryChip}>{app.category}</span>
+      )}
     </div>
   );
 }

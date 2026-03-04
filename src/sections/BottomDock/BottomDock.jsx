@@ -26,10 +26,10 @@ export default function BottomDock({ activeSection }) {
             className={`${styles.dockBtn} ${isActive ? styles.active : ""}`}
             onClick={() => handleClick(id)}
             aria-label={label}
+            data-tooltip={label}
             aria-current={isActive ? "page" : undefined}
           >
             <Icon size={20} aria-hidden="true" />
-            <span className={styles.label}>{label}</span>
           </button>
         );
       })}

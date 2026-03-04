@@ -6,26 +6,62 @@
   margin-bottom: 1.5rem;
 }
 
-/* ── Featured grid: 1 → 2 → 4 col ── */
+/* ── Featured bento grid ── */
 .featuredGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.75rem;
+  gap: 1rem;
   margin-top: 1.25rem;
 }
-@media (min-width: 480px) { .featuredGrid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 860px) { .featuredGrid { grid-template-columns: repeat(4, 1fr); } }
 
-/* ── All apps: 1 → 2 → 3 → 4 col ── */
+@media (min-width: 480px) {
+  .featuredGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 860px) {
+  .featuredGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Card 1: wide left */
+  .featuredGrid > *:nth-child(1) { grid-column: 1 / 3; }
+
+  /* Card 2: normal right — auto-placed col 3 */
+
+  /* Card 3: normal left — auto-placed col 1 */
+
+  /* Card 4: wide right */
+  .featuredGrid > *:nth-child(4) { grid-column: 2 / 4; }
+}
+
+/* ── All apps: bento repeating pattern ── */
 .allGrid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 0.75rem;
   margin-top: 1.25rem;
 }
-@media (min-width: 480px) { .allGrid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 640px) { .allGrid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 860px) { .allGrid { grid-template-columns: repeat(4, 1fr); } }
+
+@media (min-width: 480px) {
+  .allGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 860px) {
+  .allGrid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    grid-auto-flow: dense;
+  }
+
+  /* Wide card every 3rd position — creates alternating wide-left / wide-right rows */
+  .allGrid > *:nth-child(3n + 1) {
+    grid-column: span 2;
+  }
+}
 
 /* ── No results ── */
 .noResults {

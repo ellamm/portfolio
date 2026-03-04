@@ -1,3 +1,115 @@
+/* ── Code block ── */
+.codeWrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: #1e1e2e;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.codeBar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.55rem 0.9rem;
+  background: #2a2a3e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.codeDot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.codeFileName {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  margin: 0 auto;
+  letter-spacing: 0.03em;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", "JetBrains Mono", monospace;
+  font-size: clamp(0.72rem, 1.5vw, 0.82rem);
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  color: rgba(205, 214, 244, 0.85);
+  background: transparent;
+}
+
+/* Blinking cursor at end of code block */
+.codeCursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  background: #cba6f7;
+  vertical-align: text-bottom;
+  margin-left: 3px;
+  border-radius: 1px;
+  animation: cursorBlink 1.1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .codeCursor { animation: none; }
+}
+
+/* Syntax token colors */
+.kw      { color: #cba6f7; }   /* const, let, var */
+.ident   { color: #89dceb; }   /* variable name */
+.op      { color: rgba(205, 214, 244, 0.5); }   /* = : */
+.punct   { color: rgba(205, 214, 244, 0.55); }  /* [ ] { } , ; */
+.prop    { color: #89b4fa; }   /* object keys */
+.str     { color: #a6e3a1; }   /* "strings" */
+.comment { color: rgba(166, 173, 200, 0.42); font-style: italic; }
+
+/* ── Toggle row ── */
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 0;
+}
+
+.toggleBtn {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  font-family: var(--font-body);
+  color: var(--color-accent);
+  background: var(--accent-tint-bg);
+  border: 1px solid var(--accent-tint-border);
+  border-radius: var(--radius-full);
+  padding: 0.28rem 0.85rem;
+  cursor: pointer;
+  transition: background var(--ease-fast), border-color var(--ease-fast);
+  white-space: nowrap;
+}
+
+.toggleBtn:hover {
+  background: rgba(109, 40, 217, 0.13);
+}
+
+/* ── comment label in toggle row ── */
+.comment {
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  opacity: 0.65;
+  font-style: italic;
+}
+
 /* 1 col mobile → 3 col desktop */
 .grid {
   display: grid;
